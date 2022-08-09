@@ -2,7 +2,11 @@
 
 <% @tasks.each do |task| %>
   <ul>
-  <li><%= link_to task.title, task_path(task) %></li>
+    <% if task.completed == true %>
+      <span><i class="fa-solid fa-square-check"></i><%= link_to task.title, task_path(task) %></span>
+    <% else %>
+      <span><i class="fa-solid fa-square"></i><%= link_to task.title, task_path(task) %></span>
+    <% end %>
   </ul>
 <% end %>
-<span><%= link_to "Add New Task", new_task_path %></span>
+<span class="btn btn-primary"><%= link_to "Add New Task", new_task_path %></span>
